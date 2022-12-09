@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" holds class User"""
+""" holds class Vote"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
@@ -13,4 +13,3 @@ class Vote(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initialization of a vote object"""
         super().__init__(self, *args, **kwargs)
-
