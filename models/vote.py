@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 class Vote(BaseModel, Base):
-    __tablename__ = votes
+    __tablename__ = 'votes'
     """definition of the Vote class"""
     post_id = Column(String(60), ForeignKey('posts.id'), nullable=False)
     comment_id = Column(String(60), ForeignKey('comments.id'), nullable=False)
