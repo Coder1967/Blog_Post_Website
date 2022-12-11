@@ -1,20 +1,21 @@
 #!/usr/bin/python3
 from flask import Flask, jsonify
-from flask_cors import Cors
-Cors(app, resources={r"api/v1/*": {"origins": '*'}})
+from flask_cors import CORS
 from models import storage
 from api.v1.views import app_views
 
-app.register_blueprint(app_views)
 app = Flask(__name__)
 
-@app.error_handler(404)
+app.register_blueprint(app_views)
+CORS(app, resources={r"api/v1/*": {"origins": '*'}})
+
+@app.errorhandler(404)
 def handle_404(e):
     """ handles a 404 httpexception"""
     message = e.description
-    return jsonify({'error': message}), 404
+    return jsonify({'error': 'Not found'}), 404
 
-@app.error_handler(400)
+@app.errorhandler(400)
 def handle_400(e):
     """handles code 400 httpexception """
     message = e.description
