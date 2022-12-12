@@ -5,7 +5,7 @@ from . import app_views
 from flask import abort, jsonify, request
 
 
-@app_views.route('/users/user_id/posts', methods=['GET', 'POST'], strict_slashes=False)
+@app_views.route('/users/<user_id>/posts', methods=['GET', 'POST'], strict_slashes=False)
 def user_posts(user_id):
     """ GET: gets all posts by a user
         POST: adds a new post of a user"""
@@ -37,7 +37,7 @@ def user_posts(user_id):
         return jsonify(post.to_dict()), 201
 
 
-@app_views.route('post/post_id', methods=['GET', 'DELETE', 'PUT'],
+@app_views.route('post/<post_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def post(post_id):
     """GET:gets a post using its id, DELETE: deletes a post, PUT: updatews a post"""
@@ -77,7 +77,7 @@ def post(post_id):
         return jsonify({})
 
 
-@app_views('/post_search', methods=['POST']
+@app_views.route('/post_search', methods=['POST'],
            strict_slashes=False)
 def search_post():
     """ searches for a post using query given"""

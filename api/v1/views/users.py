@@ -4,6 +4,22 @@ from . import User
 from . import storage
 from flask import jsonify, request, abort
 from . import app_views
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile_picture'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+
+@app_views.route("/users/<user_id>", methods=['GET'], strict_slashes=False)
+def get_user(user_id):
+    """
+    Get: returns a user in JSON format
+    """
+    user = storage.get(User, user_id)
+
+    if user is None:
+        abort(404)
+    return jsonify(user.to_dict())
 
 
 @app_views.route("/users", methods=['GET', 'POST'],
@@ -42,7 +58,7 @@ def get_and_post_users():
         return jsonify(user.to_dict), 201
 
 
-@app_views.route('/users/user_id', methods=["PUT", "DELETE"],
+@app_views.route('/users/<user_id>', methods=["PUT", "DELETE"],
                  strict_slashes=False)
 def protected_user_methods(user_id):
     """
@@ -68,18 +84,33 @@ def protected_user_methods(user_id):
         user = storage.get(User, user_id)
         if user is None:
             abort(404)
-        else:                                                 storage.delete(user)
+        else:
+            storage.delete(user)
         storage.save()
         return jsonify({})
 
 
-@app_views("/users/user_id", methods=["GET"], strict_slashes=False)
-def get_user(user_id):
+@app_views.route("/users/<user_id>", methods=["POST"], strict_slashes=False)
+def upload(user_id):
     """
-    Get: returns a user in JSON format
+    POST: uploads a file
     """
     user = storage.get(User, user_id)
-    
-    if user is None:
-        abort(404)
-    return jsonify(user.to_dict())
+
+    if 'file' not in request.files:
+            abort(400, description='No file part')
+    file = request.files['file']
+    if file.filename == '':
+        abort(400, description='No selected file')
+    if file and allowed_file(file.filename):
+        """ saving the file as well as updating the profile column to point to the file"""
+        filename = user.name +'-' + user.id
+        filename += file.filename.split('.')[-1]
+        user.profile = os.path.join(UPLOAD_FOLDER, filename)
+        user.save()
+        file.save(user.profile)
+
+def allowed_file(filename):
+    """ checks if the file to be uploaded is of the right type"""
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
