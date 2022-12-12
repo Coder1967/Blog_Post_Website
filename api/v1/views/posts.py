@@ -4,9 +4,11 @@ from . import Post, User
 from . import app_views
 from flask import abort, jsonify, request
 
+
 @app_views.route('/users/user_id/posts', methods=['GET', 'POST'], strict_slashes=False)
 def user_posts(user_id):
-    """ GET: gets all posts by a user or POST: adds a new post of a user"""
+    """ GET: gets all posts by a user
+        POST: adds a new post of a user"""
     if request.method == 'GET':
         user = storage.get(User, user_id)
         if user is None:
@@ -73,6 +75,7 @@ def post(post_id):
             storage.delete(post)
             storage.save()
         return jsonify({})
+
 
 @app_views('/post_search', methods=['POST']
            strict_slashes=False)

@@ -28,6 +28,8 @@ def get_and_post_users():
             abort(400, description="Not a json")
         if req.get('name') is None:
             abort(400, description="Missing name")
+        if storage.get(User, None, req['name']):
+            abort(400, description="Username is in use")
         if req.get("email") is None:
             abort(400, description="Missing email")
         if req.get("password") is None:
@@ -38,3 +40,46 @@ def get_and_post_users():
         user = User(**req)
         user.save()
         return jsonify(user.to_dict), 201
+
+
+@app_views.route('/users/user_id', methods=["PUT", "DELETE"],
+                 strict_slashes=False)
+def protected_user_methods(user_id):
+    """
+    PUT: updates user information
+    DELETE: deletes user account
+    """
+    if request.method == 'PUT':
+        user = storage.get(User, user_id)
+        restricted_attr = ['id', 'created_at', 'updated_at']
+        req = request.get_json()
+
+        if user is None:
+            abort(404)
+        if req is None:
+                abort(400, description="Not a json")
+        for key in req.keys():
+            if key not in restricted_attr:
+                setattr(user, key, req[key])
+        user.save()
+        return jsonify(user.to_dict()), 201
+
+    else:
+        user = storage.get(User, user_id)
+        if user is None:
+            abort(404)
+        else:                                                 storage.delete(user)
+        storage.save()
+        return jsonify({})
+
+
+@app_views("/users/user_id", methods=["GET"], strict_slashes=False)
+def get_user(user_id):
+    """
+    Get: returns a user in JSON format
+    """
+    user = storage.get(User, user_id)
+    
+    if user is None:
+        abort(404)
+    return jsonify(user.to_dict())
