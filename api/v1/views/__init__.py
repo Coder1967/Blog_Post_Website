@@ -8,3 +8,4 @@ from models.post import Post
 from models.user import User
 from models.vote import Vote
 from .index import *
+from .posts import *

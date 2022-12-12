@@ -32,7 +32,7 @@ def user_posts(user_id):
         req['user_id'] = user_id
         post = Post(**req)
         post.save()
-        return jsonify(post.to_dict())
+        return jsonify(post.to_dict()), 201
 
 
 @app_views.route('post/post_id', methods=['GET', 'DELETE', 'PUT'],
@@ -63,7 +63,7 @@ def post(post_id):
             if key not in restricted_attr:
                 setattr(post, key, req[key])
         post.save()
-        return jsonify(post.to_dict())
+        return jsonify(post.to_dict()), 201
 
     else:
         post = storage.get(Post, post_id)
@@ -73,3 +73,19 @@ def post(post_id):
             storage.delete(post)
             storage.save()
         return jsonify({})
+
+@app_views('/post_search', methods=['POST']
+           strict_slashes=False)
+def search_post():
+    """ searches for a post using query given"""
+    req = request.get_json()
+    posts = []
+
+    if req is None:
+        abort(400, description='Not a json')
+    if req.get('query') is None:
+        abort(400, description='Missing query')
+    for post in storage.all(Post).values():
+        if (req['query'] in post.title):
+            posts.append(post.to_dict())
+    return jsonify(posts)
