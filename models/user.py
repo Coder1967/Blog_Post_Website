@@ -15,8 +15,9 @@ class User(BaseModel, Base):
     password = Column(String(128), nullable=False)
     profile = Column(String(120), default="profile/default.jpg")
     name = Column(String(128), nullable=False, unique=True)
-    posts = relationship("Post", backref="user")
-    comments = relationship("Comment", backref="user")
+    votes = relationship("Vote", backref="voter")
+    posts = relationship("Post", backref="poster")
+    comments = relationship("Comment", backref="commenter")
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

@@ -10,8 +10,8 @@ class Post(BaseModel, Base):
 
     title = Column(String(70), nullable=False)
     comments = relationship("Comment", backref="post")
-    votes = relationship("Vote", backref="post")
-    user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
+    votes = relationship("Vote")
+    user_id = Column(String(60), ForeignKey("users.id"), nullable=True)
     content = Column(Text, nullable=False)
 
     def __init__(self, *args, **kwargs):
