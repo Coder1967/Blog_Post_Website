@@ -5,7 +5,8 @@ import models
 
 app = Flask(__name__)
 
-from api.v1.views import app_views
+with app.app_context():
+    from api.v1.views import app_views
 
 
 app.register_blueprint(app_views)
