@@ -3,11 +3,10 @@
 from . import User
 from . import storage
 from flask import jsonify, request, abort
-from . import app_views, current_app
+from . import app_views
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile'
-current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
@@ -111,7 +110,7 @@ def upload(user_id):
         filename += file.filename.split('.')[-1].lower()
         user.profile = filename
         user.save()
-        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+        file.save(os.path.join(UPLOAD_FOLDER, filename))
 
 
 def allowed_file(filename):
