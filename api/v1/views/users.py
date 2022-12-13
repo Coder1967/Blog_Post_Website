@@ -2,8 +2,8 @@
 """api to interact with the users table"""
 from . import User
 from . import storage
-from flask import jsonify, request, abort, curent_app
-from . import app_views
+from flask import jsonify, request, abort
+from . import app_views, current_app
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile'
