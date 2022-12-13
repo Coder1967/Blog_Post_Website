@@ -4,8 +4,7 @@ from flask import Blueprint, current_app
 app_views = Blueprint("app_views", __name__, url_prefix='/api/v1')
 
 
-from .users import UPLOAD_FOLDER
-current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+current_app.config["UPLOAD_FOLDER"] = '/home/vagrant/Blog_Post_Website/profile'
 from models import storage
 from models.comment import Comment
 from models.post import Post
