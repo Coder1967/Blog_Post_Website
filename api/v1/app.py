@@ -12,13 +12,13 @@ CORS(app, resources=r"/*", origins=["0.0.0.0"])
 @app.errorhandler(404)
 def handle_404(e):
     """ handles a 404 httpexception"""
-    return jsonify({'error': e.description}), 404
+    return jsonify({'error': 'Not found'}), 404
 
 @app.errorhandler(400)
 def handle_400(e):
     """handles code 400 httpexception """
     message = e.description
-    return jsonify({'error': 'Not hound'}), 400
+    return jsonify({'error': message}), 400
 
 @app.teardown_appcontext
 def teardown_db(exception):

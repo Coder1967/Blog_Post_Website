@@ -2,11 +2,12 @@
 """api to interact with the users table"""
 from . import User
 from . import storage
-from flask import jsonify, request, abort
+from flask import jsonify, request, abort, curent_app
 from . import app_views
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile_picture'
+UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile'
+current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
@@ -97,6 +98,8 @@ def upload(user_id):
     """
     user = storage.get(User, user_id)
 
+    if user is None:
+        abort(404)
     if 'file' not in request.files:
             abort(400, description='No file part')
     file = request.files['file']
@@ -104,11 +107,12 @@ def upload(user_id):
         abort(400, description='No selected file')
     if file and allowed_file(file.filename):
         """ saving the file as well as updating the profile column to point to the file"""
-        filename = user.name +'-' + user.id
-        filename += file.filename.split('.')[-1]
-        user.profile = os.path.join(UPLOAD_FOLDER, filename)
+        filename = user.name +'-' + user.id + "."
+        filename += file.filename.split('.')[-1].lower()
+        user.profile = filename
         user.save()
-        file.save(user.profile)
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+
 
 def allowed_file(filename):
     """ checks if the file to be uploaded is of the right type"""
