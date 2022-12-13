@@ -9,10 +9,12 @@ from flask import abort, jsonify, request
 def user_posts(user_id):
     """ GET: gets all posts by a user
         POST: adds a new post of a user"""
+
+    user = storage.get(User, user_id)
+    if user is None:
+        abort(404)
+
     if request.method == 'GET':
-        user = storage.get(User, user_id)
-        if user is None:
-            abort(404)
         posts = []
 
         for post in user.posts:

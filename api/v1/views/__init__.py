@@ -14,3 +14,4 @@ with current_app.app_context():
     from .users import *
     from .index import *
     from .posts import *
+    from .comments import *
