@@ -15,7 +15,7 @@ CORS(app, resources=r"/*", origins=["0.0.0.0"])
 @app.errorhandler(404)
 def handle_404(e):
     """ handles a 404 httpexception"""
-    return jsonify({'error': 'Not found'}), 404
+    return jsonify({'error': "Not found"}), 404
 
 @app.errorhandler(400)
 def handle_400(e):

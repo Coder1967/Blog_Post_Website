@@ -18,7 +18,7 @@ def user_posts(user_id):
         posts = []
 
         for post in user.posts:
-            posts.append(post.to_dict)
+            posts.append(post.to_dict())
         return jsonify(posts)
     
     else:
@@ -39,7 +39,7 @@ def user_posts(user_id):
         return jsonify(post.to_dict()), 201
 
 
-@app_views.route('post/<post_id>', methods=['GET', 'DELETE', 'PUT'],
+@app_views.route('posts/<post_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def post(post_id):
     """GET:gets a post using its id, DELETE: deletes a post, PUT: updatews a post"""
@@ -58,10 +58,6 @@ def post(post_id):
             abort(404)
         if req is None:
             abort(400, description="Not a json")
-        if req.get('title') is None:
-            abort(400, description='Missing title')
-        if req.get('content') is None:
-            abort(400, description='Missing content')
 
         for key in req.keys():
             if key not in restricted_attr:

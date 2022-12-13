@@ -78,13 +78,18 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id=None, name=None):
-        """retrieves an object using its id"""
+        """retrieves an object using its id or name"""
         if id is not None:
             obj = self.__session.query(cls).get(id)
             return obj
         if name is not None:
             obj = self.__session.query(cls).filter(cls.name == name).first()
             return obj
+
+    def get_email(self, cls, email):
+        """ retrives an object using email"""
+        obj = self.__session.query(cls).filter(cls.email == email).first()
+        return obj
 
     def count(self, cls=None):
         """Returns the number of objects in storage matching the given class.
