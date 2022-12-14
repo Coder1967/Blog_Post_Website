@@ -11,7 +11,6 @@ from sqlalchemy.orm import relationship
 class User(BaseModel, Base):
     """Representation of a user """
     __tablename__ = 'users'
-    email = Column(String(128), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
     profile = Column(String(120), default="profile/default.jpg")
     name = Column(String(128), nullable=False, unique=True)
