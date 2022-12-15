@@ -7,12 +7,13 @@ import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
+location = "/home/vagrant/Blog_Post_Website/profile/default.jpg"
 
 class User(BaseModel, Base):
     """Representation of a user """
     __tablename__ = 'users'
     password = Column(String(128), nullable=False)
-    profile = Column(String(120), default="profile/default.jpg")
+    profile = Column(String(120), default=location)
     name = Column(String(128), nullable=False, unique=True)
     votes = relationship("Vote", backref="voter")
     posts = relationship("Post", backref="poster")
