@@ -47,8 +47,13 @@ def get_and_post_users():
             abort(400, description="Username is in use")
         if req.get("password") is None:
             abort(400, description="Missing password")
+        if req.get("confirm_password") is None:
+            abort(400, description="Fill out the confirm password field")
+        if req['password'] != req['confirm_password']:
+            abort(400, 'password does not match confirm password')
         if req.get("id"):
             del req['id']
+        del req['confirm_password']
 
         user = User(**req)
         user.save()
