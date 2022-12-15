@@ -2,6 +2,7 @@
 """api to interact with the users table"""
 from . import User
 from . import storage
+from .secure import auth, verify_password
 from flask import jsonify, request, abort, current_app
 from . import app_views
 from werkzeug.utils import secure_filename
@@ -62,6 +63,7 @@ def get_and_post_users():
 
 @app_views.route('/users/<user_id>', methods=["PUT", "DELETE"],
                  strict_slashes=False)
+@auth.login_required
 def protected_user_methods(user_id):
     """
     PUT: updates user information
@@ -92,6 +94,7 @@ def protected_user_methods(user_id):
         return jsonify({})
 
 
+@auth.login_required
 @app_views.route("/users/<user_id>", methods=["POST"], strict_slashes=False)
 def upload(user_id):
     """

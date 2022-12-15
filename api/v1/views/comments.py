@@ -2,6 +2,7 @@
 from . import storage
 from . import Post, Comment, User
 from . import app_views
+from .secure import auth, verify_password
 from flask import abort, jsonify, request
 
 
@@ -43,18 +44,26 @@ def user_comment(post_id, user_id):
     return jsonify(comment.to_dict())
 
 
-@app_views.route('comments/<comment_id>', methods=['GET', 'DELETE', 'PUT'],
-                 strict_slashes=False)
-def comment(comment_id):
-    """GET:gets a comment using its id, DELETE: deletes a comment, PUT: updates a comment"""
+@app_views.route('comments/<comment_id>', methods=['GET'], strict_slashes=False)
+def comment_get(comment_id):
+    """GET:gets a comment using its id"""
     comment = storage.get(Comment, comment_id)
     if comment is None:
         abort(404)
 
-    if request.method == "GET":
-        return jsonify(comment.to_dict())
+    return jsonify(comment.to_dict())
 
-    elif request.method == 'PUT':
+
+@app_views.route('comments/<comment_id>', methods=['DELETE', 'PUT'],
+                 strict_slashes=False)
+@auth.login_required
+def comment(comment_id):
+    """DELETE: deletes a comment, PUT: updates a comment"""
+    comment = storage.get(Comment, comment_id)
+    if comment is None:
+        abort(404)
+
+    if request.method == 'PUT':
         restricted_attr = ['id', 'created_at', 'updated_at']
         req = request.get_json()
 

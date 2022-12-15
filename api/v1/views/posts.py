@@ -2,6 +2,7 @@
 from . import storage
 from . import Post, User
 from . import app_views
+from .secure import auth, verify_password
 from flask import abort, jsonify, request
 
 
@@ -39,17 +40,23 @@ def user_posts(user_id):
         return jsonify(post.to_dict()), 201
 
 
-@app_views.route('posts/<post_id>', methods=['GET', 'DELETE', 'PUT'],
+@app_views.route('posts/<post_id>', methods=['GET'], strict_slashes=False)
+def get(post_id):
+    """
+    GET:gets a post using its id
+    """
+    post = storage.get(Post, post_id)
+    if post is None:
+        abort(404)
+    return jsonify(post.to_dict())
+
+
+@auth.login_required
+@app_views.route('posts/<post_id>', methods=['DELETE', 'PUT'],
                  strict_slashes=False)
 def post(post_id):
-    """GET:gets a post using its id, DELETE: deletes a post, PUT: updatews a post"""
-    if request.method == "GET":
-        post = storage.get(Post, post_id)
-        if post is None:
-            abort(404)
-        return jsonify(post.to_dict())
-
-    elif request.method == 'PUT':
+    """DELETE: deletes a post, PUT: updatews a post"""
+    if request.method == 'PUT':
         post = storage.get(Post, post_id)
         restricted_attr = ['id', 'created_at', 'updated_at']
         req = request.get_json()

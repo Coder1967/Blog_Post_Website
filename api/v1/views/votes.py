@@ -6,7 +6,7 @@ from . import Post, Comment
 from . import Vote, User
 from flask import abort, jsonify
 from . import app_views, storage
-
+from .secure import auth, verify_password
 
 @app_views.route("/posts/<an_id>/votes", strict_slashes=False)
 def article_votes(an_id):
@@ -71,6 +71,7 @@ def has_voted(user_id, an_id):
 
 
 @app_views.route("/votes/<vote_id>", methods=["DELETE"], strict_slashes=False)
+@auth.login_required
 def delete_vote(vote_id):
     """ deletes a vote instance"""
     vote = storage.get(Vote, vote_id)
