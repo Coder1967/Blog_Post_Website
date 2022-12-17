@@ -3,13 +3,13 @@
   border-width: 1px;
   width: 50%;
   font-size: 18px;
-  height: 400px;
-  padding-top: 50px;
+  height: 350px;
+  padding-top: 5px;
+  margin-left: 32rem;
 }
 
 #container{
-  padding-left: 400px;
-  padding-top: 200px;
+  padding-top: 100px;
 }
 
 .field{
@@ -27,6 +27,15 @@ span{
   color: purple;
 }
 
+#unlogged{
+  font-size: 20px;
+  color: purple;
+  margin-top: 30px;
+  text-decoration: none;
+  margin-left: 41%;
+  padding-top: 0;
+}
+
 #btn{
   width: 110px;
   margin-left: 170px;
@@ -34,4 +43,16 @@ span{
   border-radius: 10px;
   color: white;
   background-color: purple;
+  cursor: pointer;
+}
+
+.error{
+  margin-left: 32rem;
+  color: white;
+  width: 20%;
+  padding-left: 10rem;
+  padding-right: 5rem;
+  padding-top:5px;
+  background-color: #EB455f;
+  height: 60px;
 }

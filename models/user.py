@@ -6,10 +6,12 @@ from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
+
 
 location = "/home/vagrant/Blog_Post_Website/profile/default.jpg"
 
-class User(BaseModel, Base):
+class User(BaseModel, Base, UserMixin):
     """Representation of a user """
     __tablename__ = 'users'
     password = Column(String(128), nullable=False)

@@ -1,12 +1,18 @@
 {%extends "base.html"%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('auth_print.static', filename='styles/signup.css')+ '?' + cache_id}}"/>
+<script src="{{ url_for('auth_print.static', filename='scripts/signup.js')+ '?' + cache_id}}", type="text/javascript"></script>
+{% endblock head%}
 {%block content%}
-    <div id="container">
+<div id="container">
+	<div name="error"></div>
       <form  method="post" id="signup">
         <span>Sign Up</span>
         username <input type="text" name="username" placeholder="Enter username" class="field">
         password <input type="password" name="password" placeholder="Enter password" class="field">
         confirm password <input type="password" name="confirm_password" placeholder="Enter password" class="field">
-        <input type="button" name="button" value="submit" id="btn">
+        <input type="button" name="button" value="register" id="btn">
       </form>
-    </div>
+      <span id="unlogged">Already registered?  <a href="{{url_for('auth_print.login')}}">Login</a></span>
+</div>
 {%endblock content%}

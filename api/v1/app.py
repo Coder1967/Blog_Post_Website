@@ -10,7 +10,7 @@ with app.app_context():
 
 
 app.register_blueprint(app_views)
-CORS(app, resources=r"/*", origins=["0.0.0.0"])
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 @app.errorhandler(404)
 def handle_404(e):

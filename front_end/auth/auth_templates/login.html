@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('auth_print.static', filename='styles/login.css')+ '?' + cache_id}}"/>
+{% endblock head %}
+{%block content%}
+<div id="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+    	<div class="error">
+        {{ messages[0] }}
+    	</div>
+{% endif %}
+{% endwith %}
+<form  method="POST" id="login" action="/auth/login">
+        <span>Login</span>
+        username <input type="text" name="username" placeholder="Enter username" class="field"/>
+        password <input type="password" name="password" placeholder="Enter password" class="field"/>
+	Remember me <input type="checkbox" name="remember">
+	<button name="button" id="btn"/>Login</button>
+    </form>
+    <span id="unregistered">Not registered? Then <a href="/auth/signup">Sign up</a></span>
+    </div>
+{%endblock content%}

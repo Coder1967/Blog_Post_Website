@@ -1,0 +1,62 @@
+#login{
+  padding-bottom: 0;
+  border-width: 1px;
+  width: 50%;
+  font-size: 18px;
+  height: 345px;
+  padding-top: 35px;
+}
+
+#container{
+  padding-left: 400px;
+  padding-top: 100px;
+}
+
+.field{
+  display: block;
+  width: 30rem;
+  height: 1.5rem;
+  margin-bottom: 20px;
+}
+
+span{
+  margin-bottom: 15px;
+  display: block;
+  text-decoration-line: underline;
+  font-size: 100px;
+  color: purple;
+}
+
+#unregistered{
+  font-size: 20px;
+  color: purple;
+  text-decoration: none;
+  margin-left: 110px;
+  padding-top: 0;
+}
+
+ a :hover{
+  color: yellow;
+}
+
+#btn{
+  display: block;
+  width: 110px;
+  margin-left: 170px;
+  height: 30px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  background-color: purple;
+}
+
+.error{
+  margin-left: 0;
+  color: white;
+  width: 20%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top:5px;
+  background-color: #EB455f;
+  height: 60px;
+}
