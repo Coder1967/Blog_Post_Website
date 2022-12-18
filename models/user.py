@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 
 
-location = "/home/vagrant/Blog_Post_Website/profile/default.jpg"
+location = "Blog_Post_Website/profile/default.jpg"
 
 class User(BaseModel, Base, UserMixin):
     """Representation of a user """
