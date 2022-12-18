@@ -47,4 +47,4 @@ def login_post():
         return redirect(url_for('auth_print.login')) # if the user doesn't exist or password is wrong, reload the page
 
     login_user(user, remember=remember)
-    return redirect(('https://www.pornhub.com'))
+    """to contain redirection to home page"""
