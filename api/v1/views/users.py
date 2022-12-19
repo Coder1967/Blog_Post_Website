@@ -2,12 +2,14 @@
 """api to interact with the users table"""
 from . import User
 from . import storage
-from .secure import auth, verify_password
-from flask import jsonify, request, abort, current_app
+from flask import jsonify, request, abort, current_app, g
 from . import app_views
 from werkzeug.utils import secure_filename
+with current_app.app_context():
+    from .secure import auth, verify_password
 
-UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/profile'
+
+UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/front_end/main/main_static/images/profile'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -64,6 +66,7 @@ def get_and_post_users():
         return jsonify(user.to_dict()), 201
 
 
+
 @app_views.route('/users/<user_id>', methods=["PUT", "DELETE"],
                  strict_slashes=False)
 @auth.login_required
@@ -72,13 +75,17 @@ def protected_user_methods(user_id):
     PUT: updates user information
     DELETE: deletes user account
     """
+    user = storage.get(User, user_id)
+    if user is None:
+            abort(404)
+
+    if user.name != g.user.name:
+        abort(401)
+
     if request.method == 'PUT':
-        user = storage.get(User, user_id)
         restricted_attr = ['id', 'created_at', 'updated_at']
         req = request.get_json()
 
-        if user is None:
-            abort(404)
         if req is None:
                 abort(400, description="Not a json")
         for key in req.keys():
@@ -88,17 +95,15 @@ def protected_user_methods(user_id):
         return jsonify(user.to_dict()), 201
 
     else:
-        user = storage.get(User, user_id)
-        if user is None:
-            abort(404)
-        else:
-            storage.delete(user)
+        storage.delete(user)
         storage.save()
         return jsonify({})
 
 
+
+@app_views.route("/users/<user_id>", methods=["POST"], strict_slashes=False)a
+
 @auth.login_required
-@app_views.route("/users/<user_id>", methods=["POST"], strict_slashes=False)
 def upload(user_id):
     """
     POST: uploads a file

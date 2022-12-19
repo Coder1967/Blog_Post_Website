@@ -19,13 +19,13 @@ app.register_blueprint(main_print)
 
 
 login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'auth_print.login'
 login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
     """since the user_id is just the primary key of our user table, use it in the query for the user"""
-    return storage.get(user_id)
+    return storage.get(User, user_id)
 
 if __name__ == "__main__":
     app.run(port=5001, host="0.0.0.0", threaded=True)

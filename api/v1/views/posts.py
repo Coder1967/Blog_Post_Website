@@ -2,8 +2,9 @@
 from . import storage
 from . import Post, User
 from . import app_views
-from .secure import auth, verify_password
-from flask import abort, jsonify, request
+from flask import abort, jsonify, request, current_app, g
+with current_app.app_context():
+    from .secure import auth, verify_password
 
 
 @app_views.route('/users/<user_id>/posts', methods=['GET', 'POST'], strict_slashes=False)
@@ -57,13 +58,19 @@ def get(post_id):
 @auth.login_required
 def post(post_id):
     """DELETE: deletes a post, PUT: updatews a post"""
+    post = storage.get(Post, post_id)
+    if post is None:
+        abort(404)
+
+    """ making sure only the owner of the post is allowed """
+    if g.user.name != post.poster.name:
+        abort(401)
+
     if request.method == 'PUT':
         post = storage.get(Post, post_id)
         restricted_attr = ['id', 'created_at', 'updated_at']
         req = request.get_json()
 
-        if post is None:
-            abort(404)
         if req is None:
             abort(400, description="Not a json")
 
@@ -74,12 +81,8 @@ def post(post_id):
         return jsonify(post.to_dict()), 201
 
     else:
-        post = storage.get(Post, post_id)
-        if post is None:
-            abort(404)
-        else:
-            storage.delete(post)
-            storage.save()
+        storage.delete(post)
+        storage.save()
         return jsonify({})
 
 
@@ -95,6 +98,6 @@ def search_post():
     if req.get('query') is None:
         abort(400, description='Missing query')
     for post in storage.all(Post).values():
-        if (req['query'].lower() in post.title or req["query"] in post.poster.name):
+        if (req['query'].lower() in post.title or req["query"].upper() in post.title):
             posts.append(post.to_dict())
     return jsonify(posts)

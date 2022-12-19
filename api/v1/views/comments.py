@@ -3,7 +3,9 @@ from . import storage
 from . import Post, Comment, User
 from . import app_views
 from .secure import auth, verify_password
-from flask import abort, jsonify, request
+from flask import abort, jsonify, request, current_app, g
+with current_app.app_context():
+    from .secure import auth, verify_password
 
 
 @app_views.route('/posts/<post_id>/comments',
@@ -60,8 +62,13 @@ def comment_get(comment_id):
 def comment(comment_id):
     """DELETE: deletes a comment, PUT: updates a comment"""
     comment = storage.get(Comment, comment_id)
+
     if comment is None:
         abort(404)
+    """ making sure only the user of that account is allowed"""
+    if g.user.name != comment.commenter.name:
+        abort(401)
+
 
     if request.method == 'PUT':
         restricted_attr = ['id', 'created_at', 'updated_at']

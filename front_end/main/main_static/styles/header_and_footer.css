@@ -1,0 +1,70 @@
+body{
+  margin: auto;
+}
+
+header{
+  background-color: #434242;
+  width: 100%;
+  height: 75px;
+  position: fixed;
+}
+
+#logo {
+	height: 100%;
+	width: 60px;
+
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	margin-left: 20px;
+}
+
+footer{
+  display: flex;
+  position: fixed;
+  background-color: #434242;
+  width: 100%;
+  padding-top: 5px;
+  height: 30px;
+  bottom:0;
+  justify-content: center;
+  color: lightgreen;
+}
+
+#home{
+  position: absolute;
+  right: 20rem;
+  color: lightgreen;
+  top: 1.35rem;
+  text-decoration: none;
+}
+
+#home:hover{
+  color: #C060A1;
+}
+
+
+#profile{
+  position: absolute;
+  right: 15rem;
+  color: lightgreen;
+  top: 1.35rem;
+  text-decoration: none;
+}
+
+#profile:hover{
+    color: #C060A1;
+}
+
+#logout{
+  position: absolute;
+  right: 10rem;
+  color:lightgreen;
+  top: 1.35rem;
+  text-decoration: none;
+}
+
+#logout:hover{
+    color: #C060A1;
+}

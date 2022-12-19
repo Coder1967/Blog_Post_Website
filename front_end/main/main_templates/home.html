@@ -1,0 +1,23 @@
+{% extends "main_base.html"%}
+{% block head%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/home.css')+ '?' + cache_id}}"/>
+<script src="{{ url_for('main_print.static', filename='scripts/home.js')+ '?' + cache_id}}", type="text/javascript"></script>
+{% endblock head%}
+
+{%block content%}
+    <input type="search" id="search" placeholder="Search posts"></input>
+    <button name="search_btn" id="search_btn">search</button>
+    <a id="create" href="###">Create new post</a>
+    <ul id="unordered">
+
+    </ul>
+    {%for post in posts.values()%}
+    <div name="content" class="content">
+	    <img src='{{ post.poster.profile + '?' + cache_id}}'></img>
+      <u><a href="###">{{post.title}}</a></u>
+      <span>
+	      {{post.content}}
+    </span>
+    </div>
+    {%endfor%}
+{% endblock content %}

@@ -8,7 +8,7 @@ from flask import Blueprint, render_template, request
 from flask import redirect, flash, url_for
 from models import storage
 from models.user import User
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 
 
 auth_print = Blueprint('auth_print', __name__, static_folder='auth_static',
@@ -40,11 +40,17 @@ def login_post():
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
     user = storage.get(User, None, name)
-    print("hey")
 
     if not user or not user.confirm_pwd(password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth_print.login')) # if the user doesn't exist or password is wrong, reload the page
 
     login_user(user, remember=remember)
-    """to contain redirection to home page"""
+    return redirect(url_for('main_print.home'))
+
+
+@auth_print.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth_print.login'))

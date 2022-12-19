@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/header_and_footer.css')+ '?' + cache_id}}"/>
+    <link rel='shortcut icon' href="{{ url_for('main_print.static', filename='images/logo.png')+ '?' + cache_id}}"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {% block head %}{%endblock%}
+    <title>Nosa Blogsite</title>
+</head>
+<body>
+    <header>
+	    <a id="home" href="{{url_for('main_print.home')}}">Home</a>
+	    <a id="profile" href="###">Profile</a>
+	    <a id="logout" href="{{url_for('auth_print.logout')}}">Logout</a>
+      <div id="logo"></div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+      Nosa Blogpost
+    </footer>
+</body>
+</html>
