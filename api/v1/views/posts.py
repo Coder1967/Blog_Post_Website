@@ -51,9 +51,10 @@ def get(post_id):
     return jsonify(post.to_dict())
 
 
-@auth.login_required
+
 @app_views.route('posts/<post_id>', methods=['DELETE', 'PUT'],
                  strict_slashes=False)
+@auth.login_required
 def post(post_id):
     """DELETE: deletes a post, PUT: updatews a post"""
     if request.method == 'PUT':

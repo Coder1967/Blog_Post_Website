@@ -52,6 +52,9 @@ def get_and_post_users():
             abort(400, description="Fill out the confirm password field")
         if req['password'] != req['confirm_password']:
             abort(400, 'password does not match confirm password')
+
+        if len(req["password"]) < 6:
+            abort(400, "password must be at least 6 characters")
         if req.get("id"):
             del req['id']
         del req['confirm_password']
