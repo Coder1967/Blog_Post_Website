@@ -1,0 +1,12 @@
+{% extends 'main_base.html' %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/profile_page.css')+ '?' + cache_id}}"/>
+    {% endblock head %}
+    {% block content %}
+    <img src="{{ url_for('main_print.static', filename='images/profile/' + user.profile) + '?' + cache_id}}" class="profile_pic"></img>
+    <form action = {{"http://localhost:5001/users/" + user.id}} method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file"  />
+         <input type = "submit" class="update" value="upload image"/>
+      </form>
+      {% endblock content %}

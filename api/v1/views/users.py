@@ -12,6 +12,7 @@ with current_app.app_context():
 UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/front_end/main/main_static/images/profile'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+current_app.config['MAX_CONTENT_PATH'] = 1000000
 
 @app_views.route("/users/<user_id>", methods=['GET'], strict_slashes=False)
 def get_user(user_id):
@@ -98,35 +99,3 @@ def protected_user_methods(user_id):
         storage.delete(user)
         storage.save()
         return jsonify({})
-
-
-
-@app_views.route("/users/<user_id>", methods=["POST"], strict_slashes=False)a
-
-@auth.login_required
-def upload(user_id):
-    """
-    POST: uploads a file
-    """
-    user = storage.get(User, user_id)
-
-    if user is None:
-        abort(404)
-    if 'file' not in request.files:
-            abort(400, description='No file part')
-    file = request.files['file']
-    if file.filename == '':
-        abort(400, description='No selected file')
-    if file and allowed_file(file.filename):
-        """ saving the file as well as updating the profile column to point to the file"""
-        filename = user.name +'-' + user.id + "."
-        filename += file.filename.split('.')[-1].lower()
-        user.profile = filename
-        user.save()
-        file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
-
-
-def allowed_file(filename):
-    """ checks if the file to be uploaded is of the right type"""
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

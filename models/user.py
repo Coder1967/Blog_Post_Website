@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin
 
 
-location = "/main/main_static/images/profile/default.jpg"
+location = "default.jpg"
 
 class User(BaseModel, Base, UserMixin):
     """Representation of a user """
@@ -17,9 +17,9 @@ class User(BaseModel, Base, UserMixin):
     password = Column(String(128), nullable=False)
     profile = Column(String(120), default=location)
     name = Column(String(128), nullable=False, unique=True)
-    votes = relationship("Vote", backref="voter")
-    posts = relationship("Post", backref="poster")
-    comments = relationship("Comment", backref="commenter")
+    votes = relationship("Vote", backref="voter", cascade = "all, delete, delete-orphan")
+    posts = relationship("Post", backref="poster", cascade = "all, delete, delete-orphan")
+    comments = relationship("Comment", backref="commenter",cascade = "all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

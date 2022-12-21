@@ -1,0 +1,60 @@
+.profile_pic{
+  margin-top: 4.7rem;
+  height: 19rem;
+  width: 23rem;
+}
+
+.user_info {
+  position: absolute;
+  top: 4.5rem;
+  left: 26.5rem;
+  line-height: 3rem;
+  font-size: 20px;
+}
+
+#see_posts {
+  position: absolute;
+  text-decoration: none;
+  color: #3C2A21;
+}
+
+#see_posts:hover{
+  color: green;
+}
+.update{
+  background-color: #5F8D4E;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#delete{
+  background-color: #850000;
+  color: white;
+  border-radius: 25px;
+  margin-left: 4rem;
+  cursor: pointer;
+}
+
+#confirm{
+  padding-left: 60px;
+  height: 10rem;
+  width: 15.7rem;
+  font-size: 20px;
+  background-color: #C69749;
+}
+
+#no{
+  margin-left: 80px;
+  color: green;
+  cursor: pointer;
+}
+#yes{
+  color:red;
+  cursor: pointer;
+}
+
+#confirm{
+  display: none;
+}
+

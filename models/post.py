@@ -9,8 +9,8 @@ class Post(BaseModel, Base):
     __tablename__ = "posts"
 
     title = Column(String(70), nullable=False)
-    comments = relationship("Comment", backref="post")
-    votes = relationship("Vote")
+    comments = relationship("Comment", backref="post", cascade = "all, delete, delete-orphan")
+    votes = relationship("Vote", cascade = "all, delete, delete-orphan")
     user_id = Column(String(60), ForeignKey("users.id"), nullable=True)
     content = Column(Text, nullable=False)
 

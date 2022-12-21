@@ -13,7 +13,7 @@
 <body>
     <header>
 	    <a id="home" href="{{url_for('main_print.home')}}">Home</a>
-	    <a id="profile" href="###">Profile</a>
+	    <a id="profile" href="{{url_for('main_print.profile_page', user_id=user.id)}}">Profile</a>
 	    <a id="logout" href="{{url_for('auth_print.logout')}}">Logout</a>
       <div id="logo"></div>
     </header>

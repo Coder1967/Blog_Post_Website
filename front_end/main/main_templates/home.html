@@ -13,7 +13,7 @@
     </ul>
     {%for post in posts.values()%}
     <div name="content" class="content">
-	    <img src='{{ post.poster.profile + '?' + cache_id}}'></img>
+	    <a href="{{'http://127.0.0.1:5001/main/' + user.id + '/profile'}}"><img src='{{ '../main_static/images/profile/' + post.poster.profile + '?' + cache_id}}'></img></a>
       <u><a href="###">{{post.title}}</a></u>
       <span>
 	      {{post.content}}
