@@ -5,10 +5,12 @@
     {% endblock head %}
     {% block content %}
     <span class="user_info" user_name={{user.name}} user_pwd={{user.password}} user_id={{user.id}}>
-	    Username: {{user.name}}<br/>
+	    Username: {{owner.name}}<br/>
 	    Number of posts: {{post_number}}<br/>
 	    Number of votes: {{vote_number}}<br/>
-    <a href="###" id="see_posts"> see posts</a><br/>
+	 {% if post_number %}
+	 <a href="{{'http://127.0.0.1:5001/main/' + owner.name + '/user_posts'}}"> See posts</a><br/>
+    	{% endif %}
     <div id="confirm">
       Are you sure?
       <br><br>
@@ -20,8 +22,8 @@
       </span>
     </div>
     </span>
-    <img src="{{ url_for('main_print.static', filename='images/profile/' + user.profile) + '?' + cache_id}}" class="profile_pic"></img>
-    {% if user.id == profile_id %}
+    <img src="{{ url_for('main_print.static', filename='images/profile/' + owner.profile) + '?' + cache_id}}" class="profile_pic"></img>
+    {% if user.id == owner.id %}
     <input type="button" name="update" class="update" value="update profile picture">
      <input type="button" name="update" id="delete" value="delete account">
      {%endif%}

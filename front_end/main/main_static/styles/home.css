@@ -45,11 +45,12 @@ body{
   border-style: solid;
   border-color: black;
   border-width: thin;
-  height: 14.8rem;
   width: 39rem;
+  height: 20rem;
   border-radius: 25px;
   margin-top: 4.5rem;
   margin-left: 13rem;
+  margin-bottom: 3rem;
   overflow: hidden;
 }
 
@@ -79,6 +80,7 @@ span{
 }
 
 .list{
+  display: block;
   color: black;
   padding-left: 3px;
   background-color: #FFF;

@@ -12,7 +12,6 @@ class Comment(BaseModel, Base):
     content = Column(String(500), default="")
     post_id = Column(String(60), ForeignKey("posts.id"), nullable=True)
     user_id = Column(String(60), ForeignKey("users.id"), nullable=True)
-    votes = relationship("Vote", cascade = "all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """ initializes comment instance"""

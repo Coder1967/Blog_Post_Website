@@ -56,7 +56,7 @@ def upload(user_id):
         user.save()
         file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         return redirect(url_for('main_print.profile_page', user_id=user.id))
-
+    return "failed"
 
 def allowed_file(filename):
     """ checks if the file to be uploaded is of the right type"""

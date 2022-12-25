@@ -10,7 +10,7 @@ with current_app.app_context():
 @app_views.route('/users/<user_id>/posts', methods=['GET', 'POST'], strict_slashes=False)
 def user_posts(user_id):
     """ GET: gets all posts by a user
-        POST: adds a new post of a user"""
+        POST: adds a new post from a user"""
 
     user = storage.get(User, user_id)
     if user is None:
@@ -78,7 +78,10 @@ def post(post_id):
             if key not in restricted_attr:
                 setattr(post, key, req[key])
         post.save()
-        return jsonify(post.to_dict()), 201
+        post_dict = post.to_dict()
+        del post_dict['poster']
+
+        return jsonify(post_dict), 201
 
     else:
         storage.delete(post)

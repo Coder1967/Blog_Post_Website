@@ -83,7 +83,9 @@ def comment(comment_id):
             if key not in restricted_attr:
                 setattr(comment, key, req[key])
         comment.save()
-        return jsonify(comment.to_dict()), 201
+        comment_dict = comment.to_dict()
+        del comment_dict['commenter']
+        return jsonify(comment_dict), 201
 
     else:
         storage.delete(comment)

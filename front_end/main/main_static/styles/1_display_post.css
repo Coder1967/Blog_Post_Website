@@ -1,0 +1,113 @@
+.display_comment{
+  font-size: 1rem;
+  padding: 1rem;
+  font-family: sans-serif;
+  border-style: solid;
+  border-radius: 10px;
+  width: 35rem;
+}
+
+#vote_icon{
+  height: 1.9rem;
+  margin-left: 5rem;
+  cursor: pointer;
+}
+
+
+#comment_icon{
+  height: 1.9rem;
+  margin-left: 4rem;
+  cursor: pointer;
+}
+.time{
+  display: block;
+  text-decoration: underline;
+
+}
+
+.post_content{
+  display: block;
+  margin-top: 1rem;
+}
+
+.number_of{
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+.contain_comment{
+  margin-bottom: 8rem;
+  margin-left: 4rem;
+}
+
+.delete_comment{
+  position: absolute;
+  left: 15rem;
+  margin-top: 0.5rem;
+  height: 2rem;
+  border-radius: 25px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#author{
+  color: green;
+  text-decoration: none;
+}
+
+.update_comment{
+  position: absolute;
+  left: 30rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: white;
+  background-color: green;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+#comment_box{
+  resize: none;
+  display: none;
+}
+
+#submit_comment{
+  background-color: purple;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+.update_comment_box{
+  padding: 1rem;
+  resize: none;
+  font-family: sans-serif;
+  display: none;
+  border-radius: 10px;
+  width: 35rem;
+}
+
+.submit_updated_comment{
+  background-color: purple;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+#submit_post{
+  background-color: purple;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+#update_post_title{
+  margin-top: 10rem;
+  width: 25rem;
+  display: none;
+  height: 3rem;
+  margin-left: 5rem;
+}
+

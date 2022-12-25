@@ -4,15 +4,12 @@ from . import User
 from . import storage
 from flask import jsonify, request, abort, current_app, g
 from . import app_views
+import os
 from werkzeug.utils import secure_filename
 with current_app.app_context():
     from .secure import auth, verify_password
 
 
-UPLOAD_FOLDER = '/home/vagrant/Blog_Post_Website/front_end/main/main_static/images/profile'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-current_app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-current_app.config['MAX_CONTENT_PATH'] = 1000000
 
 @app_views.route("/users/<user_id>", methods=['GET'], strict_slashes=False)
 def get_user(user_id):
@@ -96,6 +93,11 @@ def protected_user_methods(user_id):
         return jsonify(user.to_dict()), 201
 
     else:
+        profile_pic = user.profile
         storage.delete(user)
         storage.save()
+        cwd = os.getcwd()
+        location = cwd + '/front_end/main/main_static/images/profile/' + user.profile
+        if  profile_pic != 'default.jpg':
+            os.remove(location)
         return jsonify({})

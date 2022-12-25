@@ -1,1 +1,0 @@
-The upload folder for profile pitures is set for a vagrant machine. change location if moved

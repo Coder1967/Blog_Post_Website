@@ -10,7 +10,6 @@ class Vote(BaseModel, Base):
     __tablename__ = 'votes'
     """definition of the Vote class"""
     post_id = Column(String(60), ForeignKey('posts.id'), nullable=True)
-    comment_id = Column(String(60), ForeignKey('comments.id'), nullable=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
 
     def __init__(self, *args, **kwargs):

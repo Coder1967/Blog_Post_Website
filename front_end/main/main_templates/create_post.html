@@ -1,0 +1,11 @@
+{% extends "main_base.html" %}
+	{% block head %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/create_post.css')+ '?' + cache_id}}"/>
+		<script src="{{ url_for('main_print.static', filename='scripts/create_post.js')+ '?' + cache_id}}", type="text/javascript"></script>
+    	{% endblock head %}
+	{% block content %}
+    		<div id="error">must enter the post title and content   <span id="cancel">x</span></div>
+   		 <input type="text" id="title" name="post_title" placeholder="Enter title"/>
+    		<textarea name="name" id="post_content"></textarea>
+		<input type="button" id="submit_post" value="post" user_id="{{user.id}}"/>
+  	{%endblock content %} 

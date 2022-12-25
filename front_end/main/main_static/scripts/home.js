@@ -23,7 +23,7 @@ $(document).ready(function(){
           $("#unordered").html('')
         }
         for (let res of resp){
-          $("#unordered").append(`<l1><a href="${link}5001/${res.title}/${res.id}/post" class="list">${res.title}</a></li>`);
+          $("#unordered").append(`<l1><a href="${link}5001/main/${res.id}/display_post" class="list">${res.title}</a></li>`);
         }
 
         },

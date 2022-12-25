@@ -1,0 +1,51 @@
+{% extends 'main_base.html' %}
+    {% block head %}
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/0_display_post.css')+ '?' + cache_id}}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('main_print.static', filename='styles/1_display_post.css')+ '?' + cache_id}}"/>
+	<script src="{{ url_for('main_print.static', filename='scripts/votes_on_post.js')+ '?' + cache_id}}", type="text/javascript"></script>
+    	<script src="{{ url_for('main_print.static', filename='scripts/update_and_delete_on_post.js')+ '?' + cache_id}}", type="text/javascript"></script>
+    	 <script src="{{ url_for('main_print.static', filename='scripts/update_and_delete_on_comment.js')+ '?' + cache_id}}", type="text/javascript"></script>
+    {% endblock head %}
+    {%block content %}
+    <div name='container' id="contain_post" user_name="{{user.name}}" user_id="{{user.id}}" user_pwd="{{user.password}}">
+      <input type="text" id="update_post_title" name="" value=""/>
+      <textarea name="name" rows="8" cols="80" id="update_post_box"></textarea>
+      <input value="update post" type="button" id="submit_post"/>
+    <div id="display_container" class="display_comment" post_id="{{post.id}}" poster_name="{{post.poster.name}}" poster_id="{{post.poster.id}}"
+                        poster_pwd="{{post.poster.password}}">
+	    <label id="title">{{post.title}}</label>
+	    <label class="time"> <a href="{{'http://127.0.0.1:5001/main/' + post.poster.id + '/profile'}}" id="author">Author:  {{post.poster.name}}</a></label>
+	    <label class="time"> Created on {{created_at}}</label>
+	    {% if created_at != updated_at %}
+      		<label class="time"> Last updated on {{updated_at}}</label>
+	     {% endif %}
+      <label class="post_content">
+      {{post.content}}
+      <textarea name="name" rows="8" cols="80" id="comment_box" placeholder="Comment"></textarea>
+      <input value="comment" type="button" id="submit_comment"/>
+</label>
+        </div>
+	<img src="{{url_for('main_print.static', filename='images/vote.png') + '?' + cache_id}}" id="vote_icon"></img><span class="number_of">{{post_votes}}</span>
+	<img src="{{url_for('main_print.static', filename='images/comment.png') + '?' + cache_id}}" id="comment_icon"></img><span class="number_of">{{post_comments}}</span>
+	{% if post.poster.id == user.id %}
+        <input type="button" name="" value="DELETE" id="delete_post"/>  <input type="button" name="" value="UPDATE" id="update_post"/>
+	{% endif %}
+        </div>
+	<span id="user"  user_name="{{user.name}}" user_id="{{user.id}}" user_pwd="{{user.password}}">
+		{% for comment in post.comments %}
+		<div class="contain_comment">
+		<div class="display_comment">
+
+			<span class="time">By {{comment.commenter.name}} on {{comment_dates[loop.index0]}}</span>
+	      {{comment.content}}
+      </div>
+      <textarea name="update_comment_box" class="update_comment_box" rows="8" cols="80"></textarea>
+      <input value="update" type="button" class="submit_updated_comment" comment_id="{{comment.id}}"/>
+      {% if comment.commenter.id == user.id %}
+      <input type="button" name="" value="DELETE" class="delete_comment" comment_id="{{comment.id}}"/>  
+      <input type="button" name="" value="UPDATE" class="update_comment" comment_id="{{comment.id}}"/>
+      {% endif %}
+      </div>
+
+    	{% endfor %}
+{% endblock content%}
