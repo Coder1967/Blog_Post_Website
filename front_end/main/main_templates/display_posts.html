@@ -36,7 +36,9 @@
 		<div class="contain_comment">
 		<div class="display_comment">
 
-			<span class="time">By {{comment.commenter.name}} on {{comment_dates[loop.index0]}}</span>
+			<span class="time"><a href="{{'http://127.0.0.1:5001/main/' + comment.commenter.id + '/profile'}}">
+					<img id="commenter_image" src='{{url_for('main_print.static', filename='images/profile/' + comment.commenter.profile) + '?' + cache_id}}'></img></a> 
+				{{comment.commenter.name}} on {{comment_dates[loop.index0]}}</span>
 	      {{comment.content}}
       </div>
       <textarea name="update_comment_box" class="update_comment_box" rows="8" cols="80"></textarea>

@@ -111,3 +111,7 @@
   margin-left: 5rem;
 }
 
+#commenter_image{
+	height: 3rem;
+	border-radius: 100%;
+}
