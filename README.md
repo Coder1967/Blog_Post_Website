@@ -11,6 +11,7 @@ and upload their profile pictures.
 
 # Features
 ### 1. A main feature is the ability of usersto make posts
+<br/>
 <img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(57).png">
 ### 2. another feature is the search bar. Here users can search out any available post
 <br/>
@@ -18,4 +19,4 @@ and upload their profile pictures.
 
 ### 3. Another feature available to users is the ability to comment and vote on posts
 <br/>
-<img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(55).png"
+<img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(55).png">
