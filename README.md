@@ -14,7 +14,7 @@ One of the main features is the search bar. Here users can search out any availa
 
 <img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(50).png">
 <img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(51).png">
-
+<br/><br/>
 Another feature available to users is the ability to comment and vote on posts
 
 <img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(51).png">
