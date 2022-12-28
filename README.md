@@ -17,4 +17,4 @@ and upload their profile pictures.
 <br/><br/>
 ### Another feature available to users is the ability to comment and vote on posts
 <br/>
-<img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(51).png">
+<img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(55).png">
