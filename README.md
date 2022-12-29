@@ -37,5 +37,5 @@ Nosakhare aghedo<br/>
 Nosakhare Aghedo - [Github](https://github.com/Coder1967) / [Twitter](https://twitter.com/NosakhareAghed1) /[Linkedin](https://www.linkedin.com/in/nosakhare-aghedo-55369523a)
 
 ## Technologies used
-Project was made using the flask framework and some of its extensions.
+Project was made using the flask framework and some of its extensions as well as sqlalchemy for the database.
 for the frontend, html, css and juery were used
