@@ -9,7 +9,6 @@ $(document).ready(function(){
     }
 
     input.query = search;
-    checked = search;
     $.ajax({
 		dataType: "json",
       contentType: 'application/json',
