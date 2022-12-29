@@ -101,6 +101,6 @@ def search_post():
     if req.get('query') is None:
         abort(400, description='Missing query')
     for post in storage.all(Post).values():
-        if (req['query'].lower() in post.title or req["query"].upper() in post.title):
+        if (req['query'].lower() in post.title.lower()):
             posts.append(post.to_dict())
     return jsonify(posts)
