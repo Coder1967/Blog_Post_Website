@@ -2,7 +2,8 @@
 
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/logo.jpg">
 
-[Go to About section](#About)
+[About section](#About)
+[Features section](#Feartures)
 
 # Introduction
 
@@ -11,7 +12,7 @@ A blogposting website where users can make posts, comment on posts, vote on post
 and upload their profile pictures.
 
 # Features
-### 1. A main feature is the ability of usersto make posts
+### 1. A main feature is the ability of users to make posts
 <br/>
 <img src="https://github.com/Coder1967/Blog_Post_Website/blob/main/assets/Screenshot%20(57).png">
 
@@ -33,3 +34,7 @@ proud with how it turned out
 
 ## Members
 Nosakhare aghedo
+
+## Technologies used
+Project was made using the flask framework and some of its extensions.
+for the frontend, html, css and juery were used
