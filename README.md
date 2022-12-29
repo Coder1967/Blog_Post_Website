@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/logo.jpg">
 
-[Go to Features section](#Features)
+[Go to About section](#About)
 
 # Introduction
 
