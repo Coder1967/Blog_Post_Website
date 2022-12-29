@@ -2,6 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/logo.jpg">
 
+[Go to Features section](#Features)
 
 # Introduction
 
@@ -30,5 +31,5 @@ and worked on a project, I already knew what I wanted to do. I learnt alot durin
 were allotted to complete the project. This is the biggest website/project I have worked on at the moment and I am
 proud with how it turned out
 
-## Member(I worked on this project alone)
+## Members
 Nosakhare aghedo
