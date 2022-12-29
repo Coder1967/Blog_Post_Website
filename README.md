@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/logo.jpg">
 
-[About section](#About)
+[About section](#About)<br/>
 [Features section](#Feartures)
 
 # Introduction
@@ -33,7 +33,8 @@ were allotted to complete the project. This is the biggest website/project I hav
 proud with how it turned out
 
 ## Members
-Nosakhare aghedo
+Nosakhare aghedo<br/>
+Nosakhare Aghedo - [Github](https://github.com/Coder1967) / [Twitter](https://twitter.com/NosakhareAghed1) /[Linkedin](https://www.linkedin.com/in/nosakhare-aghedo-55369523a)
 
 ## Technologies used
 Project was made using the flask framework and some of its extensions.
