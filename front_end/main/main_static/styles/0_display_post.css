@@ -3,6 +3,7 @@
   border-width: thin;
   border-radius: 25px;
   width: 85rem;
+  word-wrap: break-word;
   font-size: 1.5rem;
   margin: auto;
   margin-top: 2rem;
