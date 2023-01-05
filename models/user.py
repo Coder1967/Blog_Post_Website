@@ -26,10 +26,10 @@ class User(BaseModel, Base, UserMixin):
         if kwargs.get('password') is not None:
             pwd = kwargs['password']
             del kwargs['password']
-            self.__secure_password(pwd)
+            self.secure_password(pwd)
         super().__init__(*args, **kwargs)
 
-    def __secure_password(self, pwd):
+    def secure_password(self, pwd):
         """ encrypts user password to md5"""
         secure = hashlib.md5()
         secure.update(pwd.encode("utf-8"))
