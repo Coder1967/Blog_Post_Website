@@ -57,12 +57,15 @@ def get(post_id):
                  strict_slashes=False)
 @auth.login_required
 def post(post_id):
-    """DELETE: deletes a post, PUT: updatews a post"""
+    """DELETE: deletes a post, PUT: updates a post"""
     post = storage.get(Post, post_id)
     if post is None:
         abort(404)
 
-    """ making sure only the owner of the post is allowed """
+    """ 
+    making sure only the owner of the post is allowed
+    access to these http methods
+    """
     if g.user.name != post.poster.name:
         abort(401)
 
@@ -101,6 +104,6 @@ def search_post():
     if req.get('query') is None:
         abort(400, description='Missing query')
     for post in storage.all(Post).values():
-        if (req['query'].lower() in post.title.lower()):
+        if req['query'].lower() in post.title.lower():
             posts.append(post.to_dict())
     return jsonify(posts)

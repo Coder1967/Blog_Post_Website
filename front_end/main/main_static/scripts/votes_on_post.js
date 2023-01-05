@@ -6,6 +6,11 @@ $(document).ready(function(){
 	let post_id = $("div#display_container").attr("post_id");
 	let user_id = $("div#contain_post").attr("user_id");
 
+	/* sends a request to check if the current user has voted on the particular post
+	 * if they have, it shows the blue arrow image and on clicking on the arrow icon,
+	 * a request is made to the api to delete the vote 
+	 * and the reverse process occurs if they hadn't already voted(clicking adds a vote for the user in this case)
+	 */
       $.ajax({
         type: "POST",
         url: link + "5000/api/v1/users/" + user_id + '/' + post_id +"/voted",

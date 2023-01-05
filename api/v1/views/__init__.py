@@ -10,6 +10,10 @@ from models.post import Post
 from models.user import User
 from models.vote import Vote
 
+"""
+importing modules using the  app context so they
+have access to the flask global variables
+"""
 with current_app.app_context():
     from .users import *
     from .index import *

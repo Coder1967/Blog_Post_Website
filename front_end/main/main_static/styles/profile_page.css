@@ -58,3 +58,28 @@
   display: none;
 }
 
+#pwd{
+	position: absolute;
+	top: 6rem;
+	width: 12rem;
+	margin-left: 2.5rem;
+}
+
+#confirm_pwd{
+	 position: absolute;
+        top: 9rem;
+        width: 12rem;
+	margin-left: 2.5rem;
+}
+
+.error{
+  margin-left: 32rem;
+  color: white;
+  width: 10%;
+  position: absolute;
+  padding-left: 8rem;
+  padding-right: 5rem;
+  padding-bottom: 8px;
+  background-color: #EB455f;
+  height: 70px;
+}

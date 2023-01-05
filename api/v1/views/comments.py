@@ -11,6 +11,9 @@ with current_app.app_context():
 @app_views.route('/posts/<post_id>/comments',
                  methods=['GET'], strict_slashes=False)
 def get_comment(post_id):
+    """
+    gets all comments under a particular post
+    """
     post = storage.get(Post, post_id)
     posts = []
 

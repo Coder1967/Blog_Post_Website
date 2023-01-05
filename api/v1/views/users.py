@@ -77,6 +77,7 @@ def protected_user_methods(user_id):
     if user is None:
             abort(404)
 
+    """ ensuring only the owner of the account has access """
     if user.name != g.user.name:
         abort(401)
 
@@ -86,6 +87,8 @@ def protected_user_methods(user_id):
 
         if req is None:
                 abort(400, description="Not a json")
+        if req['password'] != req['confirm_password']:
+            abort(400, 'password does not match confirm password')
         for key in req.keys():
             if key not in restricted_attr:
                 setattr(user, key, req[key])
