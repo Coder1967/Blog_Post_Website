@@ -93,8 +93,8 @@ def protected_user_methods(user_id):
             if key not in restricted_attr:
                 """ making sure password is hashed"""
                 if key == 'password':
-                     setattr(user, key, user.secure_password(req[key]))
-                 else:
+                     user.secure_password(req[key])
+                else:
                     setattr(user, key, req[key])
         user.save()
         return jsonify(user.to_dict()), 201
