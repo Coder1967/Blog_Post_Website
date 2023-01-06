@@ -1,3 +1,7 @@
+/* deletes account or send user to the profile update
+ * page depending on button clicked
+ */
+
 $(document).ready(function(){
 	let user_id = $(".user_info").attr("user_id")
 	let link = 'http://127.0.0.1:5001/main/'
@@ -7,11 +11,15 @@ $(document).ready(function(){
   	});
 
   	$('#delete').click(function(){
-    	$("#confirm").css("display", "block")
+		/* displays a prompt asking user to confirm
+		 * the deletion of their account depending on the user's
+		 * input, the page is either reloaded or the account deleted
+		 */
+    		$("#confirm").css("display", "block")
   	});
 
   	$("#no").click(function(){
-    	window.location.replace(link + user_id + '/profile')
+    		location.reload(true)
   	});
 
   	$("#yes").click(function(){

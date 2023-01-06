@@ -3,13 +3,14 @@ $(document).ready(function(){
 	let link = "http://127.0.0.1";
 
 	$("input[name=file]").change(function(){
-		console.log('hey')
+		// making sure a file was actually selected before enabling button
 		$("input.update").attr('type', 'submit')
 		$("input.update").css('background-color', 'purple')
 
 	});
 
 	$("input[name=password]").change(function(){
+		//allows user to change their password
 		 $("input.update").css('background-color', 'purple')
 		 $("input.update").click(function(){
     			inputs.password = $("input[name=password]").val();
@@ -42,6 +43,7 @@ $(document).ready(function(){
 		});
 
         $("div[name=error]").click(function(){
+		// removes error displayed
                 $("div[name=error]").removeClass("error");
                 $("div[name=error]").html('')
 

@@ -1,3 +1,7 @@
+/*takes username and password and queries the api to create a
+ * new user if several conditions are met otherwise instruct user
+ * on what is missing/wrong about their input
+ */
 $(document).ready(function(){
 
 let inputs = {}
