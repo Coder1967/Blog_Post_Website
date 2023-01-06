@@ -46,7 +46,7 @@ proud with how it turned out
 ### The project consists of two main parts(api and frontend) needed to run concurrently.<br/>
 #### To run the api
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_api.png">
-<br/>
+
 #### To run the front
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_front.png">
 
