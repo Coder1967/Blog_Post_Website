@@ -6,7 +6,10 @@
 [Features](#Feartures)<br/>
 [Introduction](#Introduction)<br/>
 [Features](#Installation)<br/>
-[Usage](#Usage)
+[Usage](#Usage)<br/>
+[Members](#Members)<br/>
+[Related projects](#Related projects)<br/>
+[License](#License)
 
 # Introduction
 Hi, 😁 my name Is Nosakhare Aghedo, I built this webapp as my  project
@@ -41,17 +44,23 @@ proud with how it turned out
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/install.png">
 
 # usage
-The project consists of two main parts(api and frontend) needed to run concurrently.<br/>
-To run the api
+### The project consists of two main parts(api and frontend) needed to run concurrently.<br/>
+#### To run the api
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_api.png">
 <br/>
-To run the front
+#### To run the front
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_front.png">
 
-## Members
+# Members
 Nosakhare aghedo<br/>
 Nosakhare Aghedo - [Github](https://github.com/Coder1967) / [Twitter](https://twitter.com/NosakhareAghed1) /[Linkedin](https://www.linkedin.com/in/nosakhare-aghedo-55369523a)
+
+# Related projects
+ [AirBnB_clone](https://github.com/Coder1967/AirBnB_clone_v4)
 
 ## Technologies used
 Project was made using the flask framework and some of its extensions as well as sqlalchemy for the database.
 for the frontend, html, css and juery were used
+
+# License
+Public Domain. No copy write protection.
