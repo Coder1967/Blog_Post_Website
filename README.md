@@ -8,7 +8,6 @@
 [Features](#Installation)<br/>
 [Usage](#Usage)<br/>
 [Members](#Members)<br/>
-[Related projects](#Related projects)<br/>
 [License](#License)
 
 # Introduction
