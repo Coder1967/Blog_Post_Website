@@ -2,10 +2,15 @@
 
 <img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/logo.jpg">
 
-[About section](#About)<br/>
-[Features section](#Feartures)
+[About](#About)<br/>
+[Features](#Feartures)<br/>
+[Introduction](#Introduction)<br/>
+[Features](#Installation)<br/>
+[Usage](#Usage)
 
 # Introduction
+Hi, 😁 my name Is Nosakhare Aghedo, I built this webapp as my  project
+for the ALX portfolio project
 
 ## The project
 A blogposting website where users can make posts, comment on posts, vote on posts they like,
@@ -32,8 +37,16 @@ and worked on a project, I already knew what I wanted to do. I learnt alot durin
 were allotted to complete the project. This is the biggest website/project I have worked on at the moment and I am
 proud with how it turned out
 
-#Installation
+# Installation
+<img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/install.png">
 
+# usage
+The project consists of two main parts(api and frontend) needed to run concurrently.<br/>
+To run the api
+<img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_api.png">
+<br/>
+To run the front
+<img src="https://raw.githubusercontent.com/Coder1967/Blog_Post_Website/main/assets/run_front.png">
 
 ## Members
 Nosakhare aghedo<br/>
