@@ -4,3 +4,5 @@ Flask-HTTPAuth==4.7.0
 Flask-Login==0.6.2
 sqlalchemy
 gunicorn
+mysql==0.0.3
+mysqlclient==2.1.1
