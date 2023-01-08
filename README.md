@@ -13,7 +13,7 @@
 # Introduction
 Hi, 😁 my name Is Nosakhare Aghedo, I built this webapp as my  project
 for the ALX portfolio project.
-##blog
+## blog
 [Blog on NB](https://link.medium.com/JAVgKyh6pwb)
 
 ## The project
