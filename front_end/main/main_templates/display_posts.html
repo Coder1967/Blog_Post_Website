@@ -11,7 +11,7 @@
       <input type="text" id="update_post_title" name="" value=""/>
       <textarea name="name" rows="8" cols="80" id="update_post_box"></textarea>
       <input value="update post" type="button" id="submit_post"/>
-    <div id="display_container" class="display_comment" post_id="{{post.id}}" poster_name="{{post.poster.name}}" poster_id="{{post.poster.id}}"
+    <div id="display_container"  post_id="{{post.id}}" poster_name="{{post.poster.name}}" poster_id="{{post.poster.id}}"
                         poster_pwd="{{post.poster.password}}">
 	    <label id="title">{{post.title}}</label>
 	    <label class="time"> <a href="{{'http://127.0.0.1:5001/main/' + post.poster.id + '/profile'}}" id="author">Author:  {{post.poster.name}}</a></label>
