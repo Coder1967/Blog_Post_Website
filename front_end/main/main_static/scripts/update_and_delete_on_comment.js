@@ -1,11 +1,12 @@
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
+
 $(document).ready(function(){
-      	let link = "http://127.0.0.1:"
+      	let link = HOST
 	let user_name = $("span#user").attr("user_name");
 	let user_id = $("span#user").attr("user_id");
 	let user_pwd = $("span#user").attr("user_pwd");
 	let post_id = $("div#display_container").attr("post_id");
 
-	console.log(user_name);
 
         $(".update_comment").click(function(){
 		/*
@@ -20,7 +21,7 @@ $(document).ready(function(){
 	    let comment_id = $(this).attr("comment_id");
             $.ajax({
             type: "GET",
-            url: link + "5000/api/v1/comments/" + comment_id,
+            url: `${link}:${PORT1}/api/v1/comments/${comment_id}`,
             contentType: "application/json",
             success: function(resp){
               $("textarea.update_comment_box").val(resp.content);
@@ -36,7 +37,7 @@ $(document).ready(function(){
 		 * submits updated comment
 		 */
 		let comment_id = $(this).attr("comment_id");
-		comment = {}
+		let comment = {}
 		comment.content = $(this).siblings("textarea.update_comment_box").val()
 
           	$.ajax({
@@ -45,7 +46,7 @@ $(document).ready(function(){
 	   	headers: {
             	"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           	},
-          	url: link + "5000/api/v1/comments/" + comment_id,
+          	url: `${link}:${PORT1}/api/v1/comments/${comment_id}`,
           	contentType: "application/json",
           	success: function(resp){
             		location.reload(true);
@@ -61,7 +62,7 @@ $(document).ready(function(){
 		let comment_id = $(this).attr("comment_id");
           	$.ajax({
           		type: "DELETE",
-          		url: link + "5000/api/v1/comments/" + comment_id,
+          		url: `${link}:${PORT1}/api/v1/comments/${comment_id}`,
           		headers: {
             			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           		},
@@ -78,7 +79,7 @@ $(document).ready(function(){
 
 	$("input#submit_comment").click(function(){
 		/* enables submiting new comment */
-		comment =  {}
+		let comment =  {}
 		comment.content =  $("textarea#comment_box").val()
 		 $.ajax({
           		type: "POST",
@@ -86,7 +87,7 @@ $(document).ready(function(){
            		headers: {
             			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           		},
-          		url: link + `5000/api/v1/posts/${post_id}/${user_id}/comments`,
+          		url: `${link}:${PORT1}/api/v1/posts/${post_id}/${user_id}/comments`,
           		contentType: "application/json",
           		success: function(resp){
 		  		$("textarea.comment_box").css('display', 'none');

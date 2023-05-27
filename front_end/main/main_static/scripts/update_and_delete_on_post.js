@@ -1,5 +1,7 @@
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
+
 $(document).ready(function(){
-        let link = "http://127.0.0.1:"
+        let link = HOST + ":"
         let user_name = $("div#display_container").attr("poster_name");
         let user_pwd = $("div#display_container").attr("poster_pwd");
         let post_id = $("div#display_container").attr("post_id");
@@ -22,7 +24,7 @@ $(document).ready(function(){
 
           	$.ajax({
           		type: "GET",
-          		url: link + "5000/api/v1/posts/" + post_id,
+          		url: link + PORT1 + "/api/v1/posts/" + post_id,
           		contentType: "application/json",
           		success: function(resp){
             		$("input#update_post_title").val(resp.title);
@@ -39,7 +41,7 @@ $(document).ready(function(){
 		// deletes post
           	$.ajax({
           		type: "DELETE",
-          		url: link + "5000/api/v1/posts/" + post_id,
+          		url: link + PORT1 + "/api/v1/posts/" + post_id,
           		headers: {
             			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           		},
@@ -63,7 +65,7 @@ $(document).ready(function(){
           	$.ajax({
 	  		data: JSON.stringify(post),
           		type: "PUT",
-          		url: link + "5000/api/v1/posts/" + post_id,
+          		url: link + PORT1 + "/api/v1/posts/" + post_id,
           		headers: {
             			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           		},

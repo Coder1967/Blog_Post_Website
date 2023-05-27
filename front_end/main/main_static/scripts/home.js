@@ -1,5 +1,6 @@
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
+
 $(document).ready(function(){
-	let link = "http://127.0.0.1:"
   	let input = {};
 
 	/*handles the search functionality*/
@@ -15,7 +16,7 @@ $(document).ready(function(){
 		dataType: "json",
       		contentType: 'application/json',
   		type: "POST",
-  		url: link + "5000" + "/api/v1/post_search",
+  		url: `${HOST}:${PORT1}/api/v1/post_search`,
   		data: JSON.stringify(input),
   		success: function(resp, stat){
 			/* if the result of a previous query is still displayed, it gets
@@ -26,7 +27,7 @@ $(document).ready(function(){
           			$("#unordered").html('')
         		}
         		for (let res of resp){
-          		$("#unordered").append(`<l1><a href="${link}5001/main/${res.id}/display_post" class="list">${res.title}</a></li>`);
+          		$("#unordered").append(`<l1><a href="${HOST}:${PORT2}/main/${res.id}/display_post" class="list">${res.title}</a></li>`);
         	}
 
         	},

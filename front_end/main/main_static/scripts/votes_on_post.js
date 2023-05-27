@@ -1,7 +1,8 @@
 // handles everything related to voting on a post
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
 
 $(document).ready(function(){
-	let link = "http://127.0.0.1:"
+	let link = HOST + ":"
 	let user_name = $("div#contain_post").attr("user_name");
 	let user_pwd = $("div#contain_post").attr("user_pwd");
 	let post_id = $("div#display_container").attr("post_id");
@@ -14,7 +15,7 @@ $(document).ready(function(){
 	 */
       	$.ajax({
         	type: "POST",
-        	url: link + "5000/api/v1/users/" + user_id + '/' + post_id +"/voted",
+        	url: link + PORT1 + "/api/v1/users/" + user_id + '/' + post_id +"/voted",
         	contentType: "application/json",
         	success: function(resp){
           		if (resp.value){
@@ -22,7 +23,7 @@ $(document).ready(function(){
             			$("#vote_icon").click(function() {
                 		$.ajax({
                 			type: "DELETE",
-                			url: link + "5000/api/v1/votes/" + resp.vote_id,
+                			url: link + PORT1 + "/api/v1/votes/" + resp.vote_id,
                 			headers: {
                   				"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
                 			},
@@ -43,7 +44,7 @@ $(document).ready(function(){
             		$("#vote_icon").click(function() {
                 	$.ajax({
                 		type: "POST",
-                		url: link + "5000/api/v1/posts/" + post_id + "/" + user_id + "/votes",
+                		url: link + PORT1 + "/api/v1/posts/" + post_id + "/" + user_id + "/votes",
                 		headers: {
                   			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
                 		},

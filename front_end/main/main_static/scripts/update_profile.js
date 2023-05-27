@@ -1,6 +1,8 @@
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
+
 $(document).ready(function(){
 	let inputs = {};
-	let link = "http://127.0.0.1";
+	let link = HOST;
 
 	$("input[name=file]").change(function(){
 		// making sure a file was actually selected before enabling button
@@ -24,7 +26,7 @@ $(document).ready(function(){
             			dataType: "json",
             			contentType: 'application/json',
             			type: "PUT",
-				url: link + `:5000/api/v1/users/${user_id}`,
+				url: link + `:${PORT1}/api/v1/users/${user_id}`,
             			headers: {
 		    			"Authorization": "Basic " + btoa(user_name + ":" + user_pwd)
           
@@ -32,7 +34,7 @@ $(document).ready(function(){
 
             			data: JSON.stringify(inputs),
             			success: function(resp, stat){
-                    			window.location.replace(link + ":5001/main/home");
+                    			window.location.replace(link + ':' + PORT2 + "/main/home");
       			},
       			error: function(error, errorThrow) {
              			$("div[name=error]").addClass("error");

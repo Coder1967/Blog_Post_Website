@@ -1,10 +1,11 @@
 /* deletes account or send user to the profile update
  * page depending on button clicked
  */
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
 
 $(document).ready(function(){
 	let user_id = $(".user_info").attr("user_id")
-	let link = 'http://127.0.0.1:5001/main/'
+	let link = `${HOST}:${PORT2}/main/`
    
   	$('.update').click(function(){
     	window.location.href = link + "update_profile";
@@ -28,13 +29,13 @@ $(document).ready(function(){
 
     	$.ajax({
       	type: "DELETE",
-      	url: "http://127.0.0.1:5000/api/v1/users/" + user_id,
+      	url: `${HOST}:${PORT1}/api/v1/users/${user_id}`,
       	headers: {
         	"Authorization": "Basic " + btoa(name + ":" + pwd)
       	},
       	contentType: "application/json",
       	success: function(resp){
-        	window.location.replace("http://127.0.0.1:5001/auth/login")
+        	window.location.replace(`${HOST}:${PORT2}/auth/login`)
       	},
       	error: function(err){
         	console.log(err);

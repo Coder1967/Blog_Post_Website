@@ -1,4 +1,7 @@
+import { PORT1, PORT2, HOST } from './host_and_ports.js';
+
 $(document).ready(function(){
+
 	//handles saving post entered by user into the database using the api
     	let inputs = {};
 
@@ -26,10 +29,10 @@ $(document).ready(function(){
   			dataType: "json",
         		contentType: 'application/json',
     			type: "POST",
-    			url: "http://127.0.0.1:5000/api/v1/users/" + user_id + "/posts",
+    			url: `${HOST}:${PORT1}/api/v1/users/${user_id}/posts`,
     			data: JSON.stringify(inputs),
     			success: function(resp, stat){
-				window.location.replace("http://127.0.01:5001/main/home")
+				window.location.replace(`${HOST}:${PORT2}/main/home`)
         	},
         	error: function(error, errorThrow) {
               		console.log(error);

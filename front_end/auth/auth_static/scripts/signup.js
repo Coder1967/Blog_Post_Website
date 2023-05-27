@@ -2,10 +2,12 @@
  * new user if several conditions are met otherwise instruct user
  * on what is missing/wrong about their input
  */
+
+import {HOST, PORT1, PORT2} from './host_and_ports.js'
 $(document).ready(function(){
 
 let inputs = {}
-let link = "http://127.0.0.1"
+let link = HOST;
 
 
   $("input[name=button]").click(function(){
@@ -30,10 +32,10 @@ let link = "http://127.0.0.1"
 		    'Content-Type':'application/json'
 	    },
 
-	    url: link + ":5000/api/v1/users",
+	    url: link + `:${PORT1}/api/v1/users`,
 	    data: JSON.stringify(inputs),
 	    success: function(resp, stat){
-		    window.location.replace(link + ":5001/auth/login");
+		    window.location.replace(link + `:${PORT2}/auth/login`);
       },
       error: function(error, errorThrow) {
 	     $("div[name=error]").addClass("error");
